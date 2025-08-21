@@ -14,19 +14,22 @@
   </style>
 </head>
 
-<body class="bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 p-4 h-screen">
 
   <div class="max-w-7xl mx-auto bg-white p-6 rounded-3xl shadow-2xl">
-
-    <h1
-      class="text-4xl font-extrabold text-gray-900 mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-700">
-      Job Tracker
-    </h1>
+    <div class="w-full flex items-center justify-center mb-8 gap-4">
+      <h1
+        class="text-4xl font-extrabold text-gray-900 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-700">
+        Job Tracker
+      </h1>
+      <button id="logout-btn"
+        class="py-1 px-2 rounded bg-red-500 text-white font-semibold hover:bg-red-600 transition">Logout</button>
+    </div>
 
     <!-- Job Form -->
     <form id="jobForm"
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 p-6 bg-gray-50 rounded-2xl shadow-inner">
-      <h2 class="col-span-full text-2xl font-bold text-gray-800 mb-4">Add / Edit Job Application</h2>
+      <h2 class="col-span-full text-2xl font-bold text-gray-800">Add / Edit Job Application</h2>
 
       <div>
         <label class="block text-sm font-medium text-gray-700 mb-1">Company Name</label>
@@ -38,18 +41,19 @@
       </div>
       <div>
         <label class="block text-sm font-medium text-gray-700 mb-1">Remote Type</label>
-        <select name="locationRemoteType" class="mt-1 block w-full px-3 py-2 border rounded-md">
+        <select required name="locationRemoteType" class="mt-1 block w-full px-3 py-2 border rounded-md">
           <option value="">Select Type</option>
           <option value="Fully Remote">Fully Remote</option>
           <option value="Timezone-specific">Timezone-specific</option>
           <option value="Hybrid">Hybrid</option>
-          <option value="Local Remote">Local Remote</option>
+          <option value="Onsite">Onsite</option>
         </select>
       </div>
       <div>
         <label class="block text-sm font-medium text-gray-700 mb-1">Response Status</label>
-        <select name="responseStatus" class="mt-1 block w-full px-3 py-2 border rounded-md">
+        <select required name="responseStatus" class="mt-1 block w-full px-3 py-2 border rounded-md">
           <option>No response</option>
+          <option>Need to apply</option>
           <option>Applied</option>
           <option>Phone Screen</option>
           <option>Interview</option>
@@ -58,22 +62,57 @@
         </select>
       </div>
       <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Contact referral</label>
+        <input type="text" name="contactReferral" placeholder="" class="mt-1 block w-full px-3 py-2 border rounded-md">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Website url</label>
+        <input type="text" name="url" placeholder="" class="mt-1 block w-full px-3 py-2 border rounded-md">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Source Job Board</label>
+        <input type="text" name="sourceJobBoard" placeholder="eg: Linkedin, upwork " required
+          class="mt-1 block w-full px-3 py-2 border rounded-md">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Application Date</label>
+        <input required type="date" name="applicationDate" class="mt-1 block w-full px-3 py-2 border rounded-md">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Interview Date</label>
+        <input type="date" name="interviewDate" class="mt-1 block w-full px-3 py-2 border rounded-md">
+      </div>
+      <div>
         <label class="block text-sm font-medium text-gray-700 mb-1">Follow-Up Date</label>
-        <input type="date" name="followUpDate" class="mt-1 block w-full px-3 py-2 border rounded-md">
+        <input required type="date" name="followUpDate" class="mt-1 block w-full px-3 py-2 border rounded-md">
       </div>
       <div>
         <label class="block text-sm font-medium text-gray-700 mb-1">Priority</label>
-        <select name="priority" class="mt-1 block w-full px-3 py-2 border rounded-md">
+        <select required name="priority" class="mt-1 block w-full px-3 py-2 border rounded-md">
           <option>High</option>
           <option selected>Medium</option>
           <option>Low</option>
         </select>
       </div>
-      <div>
+
+      <div class="col-span-2">
         <label class="block text-sm font-medium text-gray-700 mb-1">Next Action</label>
         <input type="text" name="nextAction" class="mt-1 block w-full px-3 py-2 border rounded-md">
       </div>
-
+      <div class="col-span-3">
+        <label class="block text-sm font-medium text-gray-700 mb-1">Cover letter</label>
+        <textarea rows="4" type="text" name="coverLetterMessage"
+          class="mt-1 block w-full px-3 py-2 border rounded-md"></textarea>
+      </div>
+      <div class="col-span-3">
+        <label class="block text-sm font-medium text-gray-700 mb-1">Lesson learned</label>
+        <textarea rows="4" name="outcomeLessonLearned" class="mt-1 block w-full px-3 py-2 border rounded-md"></textarea>
+      </div>
+      <div class="">
+        <label class="block text-sm font-medium text-gray-700 mb-1">Upload Resume</label>
+        <input type="file" name="resume" accept=".pdf,.doc,.docx"
+          class="mt-1 block w-full text-gray-700 border border-gray-300 rounded-md px-3 py-2 cursor-pointer focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+      </div>
       <div class="col-span-full flex justify-end mt-4">
         <button type="submit" class="px-6 py-3 rounded-xl bg-blue-600 text-white font-medium hover:bg-blue-700">Save
           Application</button>
@@ -85,14 +124,13 @@
       <table class="min-w-full divide-y divide-gray-200" id="jobTable">
         <thead class="bg-gray-100">
           <tr>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Company</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Role</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Remote Type</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Follow-Up</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Priority</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Next Action</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
+            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Company</th>
+            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Priority</th>
+            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Follow-Up</th>
+            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Interview</th>
+            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Next Action</th>
+            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
           </tr>
         </thead>
         <tbody></tbody>
@@ -110,6 +148,21 @@
     const jobForm = document.getElementById('jobForm');
     const jobTableBody = document.querySelector('#jobTable tbody');
     let editingId = null;
+    const fileInput = document.querySelector('input[name="resume"]');
+
+    supabaseClient.auth.getSession().then(({ data: { session } }) => {
+      if (!session) {
+        window.location.replace('/auth.html');
+      } else {
+        window.userSession = session;
+      }
+    });
+
+    // Logout
+    document.getElementById('logout-btn').addEventListener('click', async () => {
+      await supabaseClient.auth.signOut();
+      location.reload();
+    });
 
     function getStatusColor(status) {
       switch (status) {
@@ -133,16 +186,17 @@
         const tr = document.createElement('tr');
         tr.className = "hover:bg-gray-50";
         tr.innerHTML = `
-        <td class="px-6 py-4">${job.companyName}</td>
-        <td class="px-6 py-4">${job.rolePosition}</td>
-        <td class="px-6 py-4">${job.locationRemoteType}</td>
-        <td class="px-6 py-4">
+          <td class="px-4 py-4">
+          ${job.companyName}
+          </td>
+         <td class="px-4 py-4">
           <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColor(job.responseStatus)}">${job.responseStatus}</span>
-        </td>
-        <td class="px-6 py-4">${job.followUpDate || 'N/A'}</td>
-        <td class="px-6 py-4">${job.priority}</td>
-        <td class="px-6 py-4">${job.nextAction || 'N/A'}</td>
-        <td class="px-6 py-4 text-right">
+        </td>      
+       <td class="px-4 py-4">${job.priority}</td>
+        <td class="px-4 py-4">${job.followUpDate || 'N/A'}</td>
+        <td class="px-4 py-4">${job.interviewDate || 'N/A'}</td>
+        <td class="px-4 py-4">${job.nextAction || 'N/A'}</td>
+        <td class="px-4 py-4 text-right">
           <button onclick="editJob(${job.id})" class="text-indigo-600 hover:text-indigo-900 mr-4">Edit</button>
           <button onclick="deleteJob(${job.id})" class="text-red-600 hover:text-red-900">Delete</button>
         </td>
@@ -152,42 +206,85 @@
     }
 
     async function editJob(id) {
-      const { data } = await supabaseClient.from('jobs').select('*').eq('id', id).single();
+      const { data } = await supabaseClient
+        .from("jobs")
+        .select("*")
+        .eq("id", id)
+        .single();
       if (!data) return;
+
       editingId = id;
+
       for (const key in data) {
-        if (jobForm[key]) jobForm[key].value = data[key];
+        const field = jobForm.elements[key];
+        if (field) {
+          // Skip file inputs
+          if (field.type === "file") continue;
+
+          field.value = data[key] ?? '';
+        }
       }
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     async function deleteJob(id) {
       if (!confirm('Delete this application?')) return;
       const { error, data } = await supabaseClient.from('jobs').delete().eq('id', id);
       if (error) return console.error(error);
+      alert("✔️ Record deleted successfully.");
       fetchJobs();
     }
 
     jobForm.addEventListener('submit', async e => {
       e.preventDefault();
-      const formData = {};
+      try {
+        const formData = {};
+        const file = fileInput.files[0];
+        let fileUrl = null
 
-      for (const el of jobForm.elements) {
-        if (el.name) formData[el.name] = el.value;
+        if (file) {
+          const filePath = `cv/${window.userSession.user.id}/${Date.now()}-${file.name}`;
+          const { data, error } = await supabaseClient.storage
+            .from('resumes')
+            .upload(filePath, file)
+          if (error) {
+            console.log("👀 ~ error:", error)
+            alert("Upload error:", error)
+          };
+          // Get public URL
+          const { data: urlData } = await supabaseClient
+            .storage
+            .from('resumes')
+            .getPublicUrl(filePath);
+          fileUrl = urlData.publicUrl;
+
+        }
+
+        for (const el of jobForm.elements) {
+          if (el.name) formData[el.name] = el.value;
+        }
+        const payload = {
+          ...formData,
+          user_id: window.userSession.user.id,
+          ...(fileUrl && { resume: fileUrl })
+        }
+
+        if (editingId) {
+          const { error } = await supabaseClient.from('jobs').update(payload).eq('id', editingId);
+          if (error) return console.error(error);
+          editingId = null;
+        } else {
+          const { error, data } = await supabaseClient.from('jobs').insert([payload]);
+          if (error) return console.error(error);
+        }
+        jobForm.reset();
+        fetchJobs();
+        alert("✅ Your information has been saved successfully.");
+      } catch (error) {
+        alert(error)
       }
-      if (editingId) {
-        const { error } = await supabaseClient.from('jobs').update(formData).eq('id', editingId);
-        if (error) return console.error(error);
-        editingId = null;
-      } else {
-        const { error, data } = await supabaseClient.from('jobs').insert([formData]);
 
-        console.log("👀 ~ data:", data)
-        if (error) return console.error(error);
-      }
-
-      jobForm.reset();
-      fetchJobs();
     });
 
     // Initial fetch
