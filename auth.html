@@ -64,55 +64,7 @@
 
   </div>
 
-  <!-- Job Tracker Placeholder
-  <div id="job-tracker" style="display:none;" class="w-full max-w-7xl mx-auto p-6">  
-  </div> -->
-
-  <script type="module">
-    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
-
-    const supabaseUrl = "https://ctaopcnqedchqdetovzz.supabase.co";
-    const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0YW9wY25xZWRjaHFkZXRvdnp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU3NTAxMjgsImV4cCI6MjA3MTMyNjEyOH0.U52jbnISt7bdo2mN2kqLeDQczDaDJm0PILJxZ1Bnk9k";
-    const supabaseClient = createClient(supabaseUrl, supabaseKey);
-
-    const authContainer = document.getElementById('auth-container');
-    const jobTracker = document.getElementById('job-tracker');
-
-    // Check session on load
-    supabaseClient.auth.getSession().then(({ data: { session } }) => {
-      if (session) showJobTracker();
-    });
-
-    function showJobTracker() {
-      window.location.replace('/index.html')
-      authContainer.style.display = 'none';
-      jobTracker.style.display = 'block';
-    }
-
-    // Email/Password login
-    document.getElementById('email-form').addEventListener('submit', async e => {
-      e.preventDefault();
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
-      if (error) return alert(error.message);
-      showJobTracker();
-    });
-
-    // Register
-    document.getElementById('register-btn').addEventListener('click', async () => {
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      const { error } = await supabaseClient.auth.signUp({ email, password });
-      if (error) return alert(error.message);
-      alert('Check your email for confirmation!');
-    });
-
-    // Google OAuth
-    document.getElementById('google-btn').addEventListener('click', async () => {
-      await supabaseClient.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: window.location.href } });
-    });
-  </script>
+  <script type="module" src="script/auth.js"></script>
 </body>
 
 </html>
