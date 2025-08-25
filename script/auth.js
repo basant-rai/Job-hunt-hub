@@ -11,7 +11,7 @@ supabaseClient.auth.getSession().then(({ data: { session } }) => {
 });
 
 function showJobTracker() {
-  window.location.replace('/index.html')
+  window.location.replace('/dashboard.html')
   authContainer.style.display = 'none';
   jobTracker.style.display = 'block';
 }

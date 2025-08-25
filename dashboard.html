@@ -5,13 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Job Hunt Hub</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
-  </style>
 </head>
 
 <body class="bg-gradient-to-br from-blue-50 to-indigo-100 p-4 h-screen">
@@ -29,10 +26,12 @@
       </svg>
     </a>
     <div class="w-full flex items-center justify-center mb-4 gap-4">
-      <h1
-        class="text-4xl font-extrabold text-gray-900 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-700">
-        Job Hunt Hub
-      </h1>
+      <a href="./home.html">
+        <h1
+          class="text-4xl font-extrabold text-gray-900 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-700">
+          Job Hunt Hub
+        </h1>
+      </a>
       <button id="logout-btn"
         class="py-1 px-2 rounded bg-red-500 text-white font-semibold hover:bg-red-600 transition">Logout</button>
     </div>
