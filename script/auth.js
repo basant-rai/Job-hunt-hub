@@ -39,14 +39,7 @@ document.getElementById('register-btn').addEventListener('click', async () => {
 document.getElementById('google-btn').addEventListener('click', async () => {
   await supabaseClient.auth.signInWithOAuth({
     provider: 'google', options: {
-      redirectTo: `${window.location.origin}/`
+      redirectTo: `${window.location.origin}/dashboard.html` 
     }
   });
-});
-
-supabaseClient.auth.onAuthStateChange((event, session) => {
-  if (event === "SIGNED_IN") {
-    console.log("✅ Signed in:", session.user)
-    window.history.replaceState({}, document.title, "/");
-  }
 });
