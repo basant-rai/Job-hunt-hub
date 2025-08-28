@@ -37,5 +37,16 @@ document.getElementById('register-btn').addEventListener('click', async () => {
 
 // Google OAuth
 document.getElementById('google-btn').addEventListener('click', async () => {
-  await supabaseClient.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: window.location.href } });
+  await supabaseClient.auth.signInWithOAuth({
+    provider: 'google', options: {
+      redirectTo: `${window.location.origin}/`
+    }
+  });
+});
+
+supabaseClient.auth.onAuthStateChange((event, session) => {
+  if (event === "SIGNED_IN") {
+    console.log("✅ Signed in:", session.user)
+    window.history.replaceState({}, document.title, "/");
+  }
 });
